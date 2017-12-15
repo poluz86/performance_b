@@ -13,12 +13,12 @@ node {
         try{
             echo "mvn clean test"
     		echo "junit report.xml"
-            int totalFailed = 4
+            int totalFailed = 1
             if(totalFailed >= 4){
                 throw new Exception()
             }
         }catch(Exception){
-            echo "ERROR"
+            currentBuild.result = 'UNSTABLE'
         }
     }
 }
