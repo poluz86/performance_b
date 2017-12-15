@@ -13,7 +13,7 @@ node {
         try{
             echo "mvn clean test"
     		echo "junit report.xml"
-            int totalFailed = 1
+            int totalFailed = 5
             if(totalFailed >= 4){
                 throw new Exception()
             }
