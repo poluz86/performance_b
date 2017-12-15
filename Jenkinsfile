@@ -2,7 +2,7 @@ node {
     stage('Checkout') {
         try{
             timeout(time: 1, unit:'MINUTES'){
-                sh "sleep 62"
+                sh "sleep 3"
                 echo "mvn clean compile"
             }
         }catch(Exception){
