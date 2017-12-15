@@ -13,12 +13,21 @@ node {
         try{
             echo "mvn clean test"
     		echo "junit report.xml"
-            int totalFailed = 5
+            int totalFailed = 3
             if(totalFailed >= 4){
                 throw new Exception()
             }
         }catch(Exception){
             currentBuild.result = 'UNSTABLE'
         }
+    }
+    stage('SonarQube') {
+        echo "sonar projectKey"
+    	echo "Cyclomatic Complexity mining"
+    	echo "Technical Debt mining"
+    }
+    stage('Promote') {
+        echo "mvn package"
+    	echo "Promoting package"
     }
 }
