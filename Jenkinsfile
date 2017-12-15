@@ -6,7 +6,19 @@ node {
                 echo "mvn clean compile"
             }
         }catch(Exception){
-            currentBuild.result = 'UNSTABLE'
+            currentBuild.result = 'FAILED'
+        }
+    }
+    stage('Unit Test') {
+        try{
+            echo "mvn clean test"
+    		echo "junit report.xml"
+            int totalFailed = 4
+            if(totalFailed >= 4){
+                throw new Exception()
+            }
+        }catch(Exception){
+            echo "ERROR"
         }
     }
 }
