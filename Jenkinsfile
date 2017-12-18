@@ -1,12 +1,9 @@
-#!groovy
-
-import jenkins.model.Jenkins
-import hudson.model.User
-import hudson.security.Permission
-import hudson.EnvVars
-
 pipeline {
 	agent any
+
+    environment {
+        GROOVY_HOME = '/home/paolo/.sdkman/candidates/groovy/current/bin'
+    }
 
 	stages {
 	    stage('Compile') {
@@ -15,8 +12,9 @@ pipeline {
 	    			sh "sleep 1"
 		    		//sh "./task.sh"
                     //sh 'groovy sample.groovy'
-                    theDir = new File('task.sh')
-                    println theDir.exists()
+                    echo "$env.PATH"
+		    		echo "$env.GROOVY_HOME"
+                    sh 'groovy sample.groovy'
                     echo "mvn clean compile"
    				}
 	    	}
