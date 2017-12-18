@@ -1,6 +1,10 @@
 pipeline {
 	agent any
 
+    environment {
+        GROOVY_HOME = '/home/paolo/.sdkman/candidates/groovy/current'
+    }
+
 	stages {
 	    stage('Compile') {
 			steps {
@@ -10,6 +14,7 @@ pipeline {
                     //sh 'groovy sample.groovy'
                     echo "$env.PATH"
 		    		echo "$env.GROOVY_HOME"
+                    sh 'groovy sample.groovy'
                     echo "mvn clean compile"
    				}
 	    	}
