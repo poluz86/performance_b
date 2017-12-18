@@ -1,14 +1,16 @@
 pipeline {
 	agent any
+
 	stages {
 	    stage('Compile') {
 			steps {
 	    		timeout(time: 1, unit:'MINUTES'){
-	    			sh "sleep 4"
-		    		sh "./task.sh"
-                    sh 'groovy sample.groovy'
-		    		echo "mvn clean compile"
-		    		echo "Build Quality mining"
+	    			sh "sleep 1"
+		    		//sh "./task.sh"
+                    //sh 'groovy sample.groovy'
+                    echo "$env.PATH"
+		    		echo "$env.GROOVY_HOME"
+                    echo "mvn clean compile"
    				}
 	    	}
 	    }
