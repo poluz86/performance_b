@@ -1,5 +1,10 @@
 #!groovy
 
+import jenkins.model.Jenkins
+import hudson.model.User
+import hudson.security.Permission
+import hudson.EnvVars
+
 pipeline {
 	agent any
 
@@ -10,7 +15,7 @@ pipeline {
 	    			sh "sleep 1"
 		    		//sh "./task.sh"
                     //sh 'groovy sample.groovy'
-                    groovy sample.groovy
+                    println 'HOLA GROOVY'
                     echo "mvn clean compile"
    				}
 	    	}
