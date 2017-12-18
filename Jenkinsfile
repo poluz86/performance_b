@@ -15,7 +15,8 @@ pipeline {
 	    			sh "sleep 1"
 		    		//sh "./task.sh"
                     //sh 'groovy sample.groovy'
-                    println 'HOLA GROOVY'
+                    theDir = new File('task.sh')
+                    println theDir.exists()
                     echo "mvn clean compile"
    				}
 	    	}
