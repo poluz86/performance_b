@@ -1,1 +1,1 @@
-println 'HOLA GROOVY'
+new File("").eachFileMatch(~/.*.xml/){ file -> println file.getName() }
