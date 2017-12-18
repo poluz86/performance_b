@@ -6,7 +6,7 @@ pipeline {
 	    		timeout(time: 1, unit:'MINUTES'){
 	    			sh "sleep 4"
 		    		sh "./task.sh"
-                    groovy -v
+                    sh 'groovy sample.groovy'
 		    		echo "mvn clean compile"
 		    		echo "Build Quality mining"
    				}
