@@ -2,7 +2,8 @@ pipeline {
 	agent any
 
     environment {
-        GROOVY_HOME = '/home/paolo/.sdkman/candidates/groovy/current/bin'
+        GROOVY_HOME = '/home/paolo/.sdkman/candidates/groovy/current'
+        PATH = '$PATH:/home/paolo/.sdkman/candidates/groovy/current/bin'
     }
 
 	stages {
