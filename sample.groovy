@@ -1,1 +1,1 @@
-new File("").eachFileMatch(~/.*.xml/){ file -> println file.getName() }
+println new File('task.sh').exists()
