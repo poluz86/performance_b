@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         GROOVY_HOME = '/home/paolo/.sdkman/candidates/groovy/current'
-        PATH = '$PATH:/home/paolo/.sdkman/candidates/groovy/current/bin'
+        PATH = "$PATH:/home/paolo/.sdkman/candidates/groovy/current/bin"
     }
 
 	stages {
