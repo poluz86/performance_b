@@ -14,7 +14,7 @@ pipeline {
                     //sh 'groovy sample.groovy'
                     echo "$env.PATH"
 		    		echo "$env.GROOVY_HOME"
-                    sh 'groovy sample.groovy'
+                    groovy sample.groovy
                     echo "mvn clean compile"
    				}
 	    	}
