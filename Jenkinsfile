@@ -1,42 +1,33 @@
 pipeline {
 	agent any
 
-    environment {
-        GROOVY_HOME = '/home/paolo/.sdkman/candidates/groovy/current'
-        PATH = "$PATH:/home/paolo/.sdkman/candidates/groovy/current/bin"
+    options {
+        buildDiscarder(logRotator(numToKeepStr:'5'))
+    }
+
+	environment {
+        PATH = "$PATH:/home/paolo/Documents/apache-jmeter-3.3/bin/"
     }
 
 	stages {
-	    stage('Compile') {
+	    stage('API Test') {
 			steps {
-	    		timeout(time: 1, unit:'MINUTES'){
-	    			sh "sleep 1"
-		    		//sh "./task.sh"
-                    //sh 'groovy sample.groovy'
-                    echo "$env.PATH"
-		    		echo "$env.GROOVY_HOME"
-                    sh 'groovy sample.groovy'
-                    echo "mvn clean compile"
+	    		timeout(time: 10, unit:'MINUTES'){
+		    		echo "API Test execution"
    				}
 	    	}
 	    }
-    	stage('Unit Test') {
+    	stage('Performance Test') {
     		steps {
-    			echo "mvn clean test"
-    			echo "junit report.xml"
+				timeout(time:10, unit:'MINUTES'){
+					sh 'jmeter -n -t ./Presentation_example.jmx -l ./report.jtl'
+					perfReport '*report.jtl'
+				}
     		}
     	}
-    	stage('SonarQube') {
+    	stage('Mining') {
     		steps {
-    			echo "sonar projectKey"
-    			echo "Cyclomatic Complexity mining"
-    			echo "Technical Debt mining"
-    		}
-    	}
-    	stage('Promote') {
-    		steps {
-    			echo "mvn package"
-    			echo "Promoting package"
+    			echo "Mining Both Reports"
     		}
     	}
    }
